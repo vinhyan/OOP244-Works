@@ -46,6 +46,7 @@ namespace sdds {
         if (read(name) && read(student.m_studentNumber) && read(student.m_grade)) {
             student.m_name = new char[strlen(name) + 1];
             strcpy(student.m_name, name);
+
             success = true;
         };
 
@@ -70,6 +71,8 @@ namespace sdds {
             cout << "Error: incorrect number of records read; the data is possibly corrupted." << endl;
             success = false;
         }
+
+        closeFile();
        
         return success;
 
