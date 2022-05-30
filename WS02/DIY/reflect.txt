@@ -1,0 +1,34 @@
+/*
+Workshop 02 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : May 30, 2022
+
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+*/
+
+
+In this project, I was able to apply new object-oriented concepts of C++. Specifically, the four concepts that are implemented in this workshop are overloading functions, dynamic memory allocation, references, and default value for function arguments. 
+
+In C++, overloading functions are functions that can have more than one definition. The advantage of overloading functions is it helps with memory saving as well as readability and maintainability. In my DIY code, the overloading functions are load() and load(Employee& employee). Although these functions share the same name, they have different definitions. Load() is and storing the student data to students[] with dynamic memory, while load(Employee& employee) reads data of each employee.
+
+In object oriented languages, we are able to allocate memory for arrays dynamically. This can be done by using the “new” keyword and specifying n allocated memory dynamically for an array. After allocating memory, we have to deallocate it by using the “detele” keyword. When working on part 2 (DIY) of this project, I forgot to deallocate for the employees[] (employees = new Employee[noOfRecs];) which caused memory leak. After double checking my code and fixing it, it passed valgrind with no memory leak anymore. An example from my DIY code where I deallocated employees[]:
+void deallocate() {
+		for (int i = 0; i < noOfRecs; i++) {
+			delete[] employees[i].m_name;
+		}
+
+		delete[] employees;
+		delete[] bdayEmployees;
+	}
+	
+For object oriented language, the ability to pass arguments by their reference makes it more readable and maintainable. As opposed to pass-by-address (pointer), pass-by-reference functions have a much more readable and cleaner syntax while the two methods obtain the same result. For instance, the function from my DIY code that uses birthdate reference to pass as an argument:
+bool read(BirthDate& birthdate) {
+		bool success = fscanf(fptr, "%d/%d/%d\n", &birthdate.month, &birthdate.day,
+													 &birthdate.year);
+		return success;
+
+	}
+
+
