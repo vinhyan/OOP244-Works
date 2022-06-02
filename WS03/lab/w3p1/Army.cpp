@@ -93,7 +93,7 @@ namespace sdds {
 
 	//Displays armies information
 	void displayDetails(const Army* armies, int size) {
-		cout << "Armies reporting to battle:" << endl;
+		cout << "Armies reporting to battle: " << endl;
 
 		for (int i = 0; i < size; i++) {
 			if (!armies[i].isEmpty()) {
