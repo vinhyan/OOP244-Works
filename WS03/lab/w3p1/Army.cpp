@@ -83,7 +83,7 @@ namespace sdds {
 			isWinner = arm1.isStrongerThan(arm2);
 
 			if (isWinner) {
-				arm2.updateUnits(int(-(sarm2.checkCapacity() * 0.5)));
+				arm2.updateUnits(int(-(arm2.checkCapacity() * 0.5)));
 			}
 			else {
 				arm1.updateUnits(int(-(arm1.checkCapacity() * 0.5)));
