@@ -3,7 +3,7 @@ Workshop 03 - Part 1
 Full Name   : Vinh Nhan
 Seneca email: vnhan1@myseneca.ca
 Student ID  : 171452212
-Date        : 06/02/2022
+Date        : 06/03/2022 - Changed from using strcpy to strncpy in createArmy()
 
 I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 */
@@ -27,9 +27,9 @@ namespace sdds {
 	void Army::createArmy(const char* country, double pow, int troops) {
 		bool valid = (country != nullptr && strlen(country) > 0 && 
 					  troops > 0 && pow > 0);
-		
+
 		if (valid) {
-			strcpy(m_nationality, country);
+			strncpy(m_nationality, country, MAX_NAME_LEN);
 			m_noOfUnits = troops;
 			m_power = pow;
 		}
