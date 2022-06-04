@@ -22,6 +22,6 @@ int main() {
    bc.add("Worst Lab Ever", 5);
    cout << "Proper draw call after all samples are entered:" << endl;
    bc.draw();
-   //bc.deallocate();
+   bc.deallocate();
    return 0;
 }
