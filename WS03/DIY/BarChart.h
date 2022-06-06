@@ -19,23 +19,26 @@ namespace sdds {
 		int m_numOfBars{};
 		int m_numOfAddedVal{};
 	public:
+		//Validates if a BarChart is valid of not
 		bool validate() const;
 
+		//Initializes BarChart with title, number of samples and fill character
 		void init(const char* title, int noOfSamples, char fill);
 
+		//Adds a Bar with title and value
 		void add(const char* bar_title, int value);
 
+		//Draws a BarChart only if it's valid
 		void draw() const;
 
+		//Deallocate all dynamic memory
 		void deallocate();
 	};
 
+	//Prints a line of number of dash
 	void printDashLine(int numOfDash);
 
 }
-
-
-
 
 #endif // !SDDS_BARCHART
 

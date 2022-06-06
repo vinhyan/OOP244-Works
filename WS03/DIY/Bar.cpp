@@ -18,12 +18,15 @@ I have done all the coding by myself and only copied the code that my professor 
 using namespace std;
 
 namespace sdds {
+
+	//Sets Bar to empty state
 	void Bar::setEmpty() {
 		m_title[0] = '\0';
 		m_fillChar = 0;
 		m_sampleVal = 0;
 	}
 
+	//Sets Bar title, fill character, value of the bar. Sets Bar to empty state if any argument is invalid
 	void Bar::set(const char* title, char fillChar, int val) {
 		
 		if (!(val < 0 || val > 100)) {
@@ -36,15 +39,16 @@ namespace sdds {
 		}
 	}
 
+	//Returns if the Bar is valid or not
 	bool Bar::isValid() {
 		return !!m_sampleVal;
 	}
 
+	//Draws a bar based on its data
 	void Bar::draw() const {
 
 		if (m_sampleVal) {
 			cout.setf(ios::left);
-			//cout.fill(m_fillChar);
 			cout.width(20);
 			cout.fill('.');
 			cout << m_title << "|";
