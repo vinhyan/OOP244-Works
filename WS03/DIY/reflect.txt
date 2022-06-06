@@ -1,0 +1,24 @@
+/*
+Workshop 03 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : June 6, 2022
+
+*/
+
+In this workshop, I was able to learn how to define a Class in C++. Essentially, a class type is private by default, meaning all of its member variables and functions are not accessible by the client code. However, we can make it become accessible by using the keyword “public”. 
+
+When working with class, we can to create different functions to report or change the state of the object. Specifically in part 1 (lab), the functions const char* checkNationality() const or int checkCapacity() const are to provide the data of the object only (nationality and capacity of an army), without allowing the user to modify any of it. On the other hand, function void updateUnits(int troops); allows the user to modify the number of units of an army.
+
+In part 2 (DIY), I also had the opportunity to practice using standard library to manipulate the data sent to the output. To be more specific, the output requirement for drawing a bar is to have the bar title and bar value print in left alignment. Moreover, if the bar title is less than 20 characters, the rest of the characters will be in dots. As a result, all of this can be achieved with the following code:
+
+cout.setf(ios::left);    //for left align
+cout.width(20);          //sets the width of the next output field to be 20
+cout.fill('.');          //sets the padding character to be “.”
+cout << m_title << "|";  
+
+for (int i = 0; i < int(m_sampleVal / 2); i++) {
+  cout << m_fillChar;
+};
+cout << endl;

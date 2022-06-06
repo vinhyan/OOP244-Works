@@ -11,8 +11,6 @@ I have done all the coding by myself and only copied the code that my professor 
 #define SDDSD_BAR_H
 
 
-
-
 namespace sdds {
 
 	const int MAX_TITLE_CHAR = 20;
@@ -22,12 +20,16 @@ namespace sdds {
 		char m_fillChar{};
 		int m_sampleVal{};
 	public:
+		//Sets Bar to empty state
 		void setEmpty();
 
+		//Sets Bar title, fill character, value of the bar. Sets Bar to empty state if any argument is invalid
 		void set(const char* title, char fillChar, int val);
 
+		//Returns if the Bar is valid or not
 		bool isValid();
 
+		//Draws a bar based on its data
 		void draw() const;
 
 
