@@ -24,11 +24,11 @@ namespace sdds {
 	}
 
 	void Car::deallocate() {
-		delete m_type;
+		delete[] m_type;
 		m_type = nullptr;
-		delete m_brand;
+		delete[] m_brand;
 		m_brand = nullptr;
-		delete m_model;
+		delete[] m_model;
 		m_model = nullptr;
 	}
 
