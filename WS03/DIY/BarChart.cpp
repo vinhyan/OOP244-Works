@@ -65,7 +65,9 @@ namespace sdds {
     //Deallocate all dynamic memory
     void BarChart::deallocate() {
         delete[] m_title;
+        m_title = nullptr;
         delete[] m_bars;
+        m_bars = nullptr;
     }
 
     //Prints a line of number of dash
