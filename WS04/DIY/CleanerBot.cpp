@@ -158,7 +158,7 @@ namespace sdds {
 
 	void displayLowBattery(int lowBattery) {
 		cout << "|====================================================|" << endl;
-		cout << "| LOW BATTERY WARNING :                              |" << endl;
+		cout << "| LOW BATTERY WARNING:                               |" << endl;
 		cout << "|====================================================|" << endl;
 		cout << "| Number of robots to be charged: "; 
 		cout << lowBattery << "                  |" << endl;
