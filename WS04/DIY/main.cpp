@@ -24,7 +24,7 @@ int main()
 		{"?", -1, 1, false},
 		{"basement", 29.9, 1, true}
 	};
-
+	
 	report(bot, num_bots);
 
 	return 0;
