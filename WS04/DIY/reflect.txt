@@ -1,0 +1,24 @@
+/*
+Workshop 04 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 06/12/2022
+*/
+
+In this workshop, I was able to learn how to make constructors for a class. In object oriented program, initializing objects at creation time can help avoid working with unwanted values. Constructors are special member functions that are called and executed as soon as objects are declared. These special member functions do not have a return type. Moreover, constructors also have overloads which give users more option to declare and instantiate objects. For instance, in DIY part, these are the default constructor and overload constructor of class CleanerBot:
+
+	CleanerBot::CleanerBot() {
+		setEmpty();
+	}
+
+	CleanerBot::CleanerBot(const char* location, const double battery, const int brush, 
+						   const bool active) {
+		set(location, battery, brush, active);
+	}
+	
+Furthermore, it is best practice to initialize an object’s member variables to safe empty state each time a new instance is declared with constructor. This will help all member variables to not have any unwanted values to work with.
+On the other hand, a class can also have a destructor which to be invoked when an object finishes its lifetime. In the DIY part, to help class CleanerBot clean up the dynamically allocated memory, I created the destructor which the deallocated() is called:
+CleanerBot::~CleanerBot() {
+		deallocate();
+	}	
