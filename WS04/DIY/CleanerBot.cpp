@@ -77,7 +77,7 @@ namespace sdds {
 	}
 
 	const bool CleanerBot::isValid() const {
-		return (m_location && m_location[0]) && m_battery > 0;
+		return (m_location && m_location[0]) && m_battery > 0 && m_brush > 0;
 	}
 
 	void CleanerBot::display() {
@@ -176,7 +176,6 @@ namespace sdds {
 				for (j = i; j < num_bots; j++) {
 					if (bot[j].getBattery() > bot[idx].getBattery()) {
 						idx = j;
-
 					}
 				}
 
