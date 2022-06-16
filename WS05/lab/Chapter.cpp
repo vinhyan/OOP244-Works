@@ -55,7 +55,7 @@ namespace sdds {
 	}
 
 	Chapter::operator double() const {
-		return m_num_words;
+		return (double)m_num_words/m_num_pages;
 	}
 
 	Chapter::operator const char* () const {
