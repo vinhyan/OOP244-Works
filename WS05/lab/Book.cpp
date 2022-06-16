@@ -72,7 +72,7 @@ namespace sdds {
 
 	std::ostream& Book::display(std::ostream& os) const {
 		cout << "Title:'" << m_title << "'" << endl;
-		cout << "Author:" << m_author << "'" << endl;
+		cout << "Author: '" << m_author << "'" << endl;
 		for (int i = 0; i < m_num_chapters; i++) {
 			m_chapters[i].display(os);
 		}
