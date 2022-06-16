@@ -86,7 +86,7 @@ namespace sdds {
 	Book::operator bool() const {
 		int count = 0;
 		for (int i = 0; i < m_num_chapters; i++) {
-			if ((double)m_chapters[i] > 0) count++;
+			if ((int)m_chapters[i] > 0) count++;
 		}
 		return (m_title && m_author && m_num_chapters && (count > 0));
 	}
