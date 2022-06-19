@@ -7,9 +7,11 @@ Version 1.0
 -------------------------------------------------------*/
 
 #include <iostream>
+#include "Hero.h"
+#include "Power.h"
 #include <cstring>
 using namespace std;
-#include "hero.h"
+
 using namespace sdds;
 void displayDetails(const Hero* heroes, int size);
 int main() {
