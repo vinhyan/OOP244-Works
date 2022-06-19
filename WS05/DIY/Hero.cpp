@@ -23,7 +23,7 @@ namespace sdds {
 		setEmpty();
 	}
 
-	Hero::Hero(const char* name, Power* power, int num_power) {
+	Hero::Hero(const char* name, const Power* power, int num_power) {
 		int totalRarity = 0;
 		setEmpty();
 		strcpy(m_name, name);
@@ -60,6 +60,15 @@ namespace sdds {
 		return ostr;
 	}
 
+	void Hero::display() const {
+		cout << "Name: " << m_name << endl;
+		cout << "List of available powers:" << endl;
+		for (int i = 0; i < m_num_power; i++) {
+			cout << "  Name: " << m_power[i].checkName() << ", "
+				<< "Rarity: " << m_power[i].checkRarity() << endl;
+		}
+		cout << "Power Level: " << m_power_level;
+	}
 
 	Hero& Hero::operator+=(const Power& power) {
 		Power* temp{};
@@ -69,8 +78,8 @@ namespace sdds {
 		for (int i = 0; i < m_num_power; i++) {
 			temp[i].createPower(m_power[i].checkName(), m_power[i].checkRarity());
 		}
-		delete[] m_power;
-		m_power = nullptr;
+
+		deallocate();
 
 		m_power = new Power[m_num_power + 1];
 		for (int i = 0; i < m_num_power; i++) {

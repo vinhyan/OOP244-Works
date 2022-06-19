@@ -24,10 +24,11 @@ namespace sdds {
 		int m_power_level{}; 
 	public:
 		Hero();
-		Hero(const char* name, Power* power, int num_power);
+		Hero(const char* name, const Power* power, int num_power);
 		~Hero();
 		Hero& setEmpty();
 		std::ostream& display(std::ostream& ostr) const;
+		void display() const;
 		Hero& operator+=(const Power& power);
 		Hero& operator-=(int num);
 		bool operator<(const Hero& hero) const;
