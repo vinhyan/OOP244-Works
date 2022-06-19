@@ -34,6 +34,7 @@ namespace sdds {
 			totalRarity += m_power[i].checkRarity();
 		}
 		m_power_level = totalRarity * m_num_power;
+		
 	}
 
 	Hero::~Hero() {
@@ -68,6 +69,8 @@ namespace sdds {
 		for (int i = 0; i < m_num_power; i++) {
 			temp[i].createPower(m_power[i].checkName(), m_power[i].checkRarity());
 		}
+		delete[] m_power;
+		m_power = nullptr;
 
 		m_power = new Power[m_num_power + 1];
 		for (int i = 0; i < m_num_power; i++) {
