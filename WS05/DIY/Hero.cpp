@@ -60,7 +60,7 @@ namespace sdds {
 		return ostr;
 	}
 
-	void Hero::display() const {
+	std::ostream& Hero::display() const {
 		cout << "Name: " << m_name << endl;
 		cout << "List of available powers:" << endl;
 		for (int i = 0; i < m_num_power; i++) {
@@ -68,6 +68,7 @@ namespace sdds {
 				<< "Rarity: " << m_power[i].checkRarity() << endl;
 		}
 		cout << "Power Level: " << m_power_level;
+		return cout;
 	}
 
 	Hero& Hero::operator+=(const Power& power) {
