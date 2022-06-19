@@ -51,7 +51,7 @@ namespace sdds {
 
 	std::ostream& Hero::display(std::ostream& ostr) const{
 		ostr << "Name: " << m_name << endl;
-		ostr << "List of available powers:" << endl;
+		ostr << "List of available powers: " << endl;
 		for (int i = 0; i < m_num_power; i++) {
 			ostr << "  Name: " << m_power[i].checkName() << ", "
 				 << "Rarity: " << m_power[i].checkRarity() << endl;
@@ -62,7 +62,7 @@ namespace sdds {
 
 	std::ostream& Hero::display() const {
 		cout << "Name: " << m_name << endl;
-		cout << "List of available powers:" << endl;
+		cout << "List of available powers: " << endl;
 		for (int i = 0; i < m_num_power; i++) {
 			cout << "  Name: " << m_power[i].checkName() << ", "
 				<< "Rarity: " << m_power[i].checkRarity() << endl;
