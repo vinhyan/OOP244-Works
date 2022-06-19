@@ -28,7 +28,7 @@ namespace sdds {
 		~Hero();
 		Hero& setEmpty();
 		std::ostream& display(std::ostream& ostr) const;
-		void display() const;
+		std::ostream& display() const;
 		Hero& operator+=(const Power& power);
 		Hero& operator-=(int num);
 		bool operator<(const Hero& hero) const;
