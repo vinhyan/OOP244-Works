@@ -38,6 +38,12 @@ namespace sdds {
 			this->setEmpty();
 		}
 	}
+
+	Power& Power::operator=(const Power& power) {
+		createPower(power.checkName(), power.checkRarity());
+		return *this;
+	}
+	
 	const char* Power::checkName() const {
 		return m_name;
 	}
