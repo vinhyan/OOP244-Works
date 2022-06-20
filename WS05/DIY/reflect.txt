@@ -1,0 +1,48 @@
+/*
+Workshop 05 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 06/20/2022
+
+*/
+ 
+In this workshop, I was able to get myself familiar with creating several member operators in a class. In object-oriented programming, we create overloads for the operators so that we can use expressions on a class. In addition, there are several operations such as binary, unary and type conversion; therefore, we can create overloads for these operators to use throughout the program. For instance, in DIY part, I’ve created the overloads for these binary operators:
+Hero& Hero::operator+=(const Power& power) {
+		Power* temp{};
+		int totalRarity = 0;
+
+		temp = new Power[m_num_power];
+		for (int i = 0; i < m_num_power; i++) {
+			temp[i].createPower(m_power[i].checkName(), m_power[i].checkRarity());
+		}
+
+		deallocate();
+
+		m_power = new Power[m_num_power + 1];
+		for (int i = 0; i < m_num_power; i++) {
+			m_power[i].createPower(temp[i].checkName(), temp[i].checkRarity());
+			totalRarity += m_power[i].checkRarity();
+		}
+
+		delete[] temp;
+		m_power[m_num_power].createPower(power.checkName(), power.checkRarity());
+		totalRarity += m_power[m_num_power].checkRarity();
+
+		m_power_level = totalRarity * (m_num_power + 1);
+		m_num_power++;
+		return *this;
+	}
+Hero& Hero::operator-=(int num) {
+		m_power_level -= num;
+		return *this;
+	}
+	
+Furthermore, I’ve streamlined my code by creating an overload for the assignment operator for the Power class. Essentially, this overload will help copy one power to another by calling the createPower(). By doing this, every time we need to copy power A to power B, all we have to do is B = A, instead of calling the createPower() method and passing the arguments each time.
+Example:
+Power& Power::operator=(const Power& power) {
+		createPower(power.checkName(), power.checkRarity());
+		return *this;
+	}
+
+As a result, having member operators for our program will make our code easy to read, debug and maintain.

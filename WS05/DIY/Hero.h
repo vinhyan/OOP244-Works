@@ -15,8 +15,6 @@ provided to complete my workshops and assignments.
 
 
 namespace sdds {
-	//const int MAX_NAME_LENGTH = 50;
-	//class Power;
 	class Hero {
 		char m_name[MAX_NAME_LENGTH + 1];
 		Power* m_power{};

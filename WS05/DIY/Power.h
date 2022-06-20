@@ -26,7 +26,7 @@ namespace sdds {
 		Power(const char* name, int rarity);
 		void setEmpty();
 		void createPower(const char* name, int rarity);
-
+		Power& operator=(const Power& power);
 		const char* checkName() const;
 		int checkRarity() const;
 		bool isEmpty() const;

@@ -30,7 +30,7 @@ namespace sdds {
 		m_num_power = num_power;
 		m_power = new Power[num_power];
 		for (int i = 0; i < num_power; i++) {
-			m_power[i].createPower(power[i].checkName(), power[i].checkRarity());
+			m_power[i] = power[i];
 			totalRarity += m_power[i].checkRarity();
 		}
 		m_power_level = totalRarity * m_num_power;
@@ -65,7 +65,7 @@ namespace sdds {
 		cout << "List of available powers: " << endl;
 		for (int i = 0; i < m_num_power; i++) {
 			cout << "  Name: " << m_power[i].checkName() << ", "
-				<< "Rarity: " << m_power[i].checkRarity() << endl;
+				 << "Rarity: " << m_power[i].checkRarity() << endl;
 		}
 		cout << "Power Level: " << m_power_level;
 		return cout;
@@ -77,19 +77,20 @@ namespace sdds {
 
 		temp = new Power[m_num_power];
 		for (int i = 0; i < m_num_power; i++) {
-			temp[i].createPower(m_power[i].checkName(), m_power[i].checkRarity());
+			temp[i] = m_power[i];
 		}
 
 		deallocate();
 
 		m_power = new Power[m_num_power + 1];
 		for (int i = 0; i < m_num_power; i++) {
-			m_power[i].createPower(temp[i].checkName(), temp[i].checkRarity());
+			m_power[i] = temp[i];
 			totalRarity += m_power[i].checkRarity();
 		}
 
 		delete[] temp;
-		m_power[m_num_power].createPower(power.checkName(), power.checkRarity());
+
+		m_power[m_num_power] = power;
 		totalRarity += m_power[m_num_power].checkRarity();
 
 		m_power_level = totalRarity * (m_num_power + 1);
