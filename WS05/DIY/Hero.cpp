@@ -34,7 +34,6 @@ namespace sdds {
 			totalRarity += m_power[i].checkRarity();
 		}
 		m_power_level = totalRarity * m_num_power;
-		
 	}
 
 	Hero::~Hero() {
@@ -49,6 +48,7 @@ namespace sdds {
 		return *this;
 	}
 
+	//This function does not get accepted by Matrix submitter
 	std::ostream& Hero::display(std::ostream& ostr) const{
 		ostr << "Name: " << m_name << endl;
 		ostr << "List of available powers: " << endl;
@@ -60,6 +60,7 @@ namespace sdds {
 		return ostr;
 	}
 
+	//Replacement for the above function
 	std::ostream& Hero::display() const {
 		cout << "Name: " << m_name << endl;
 		cout << "List of available powers: " << endl;
@@ -75,26 +76,35 @@ namespace sdds {
 		Power* temp{};
 		int totalRarity = 0;
 
-		temp = new Power[m_num_power];
-		for (int i = 0; i < m_num_power; i++) {
-			temp[i] = m_power[i];
-		}
+		//temp = new Power[m_num_power];
+		//for (int i = 0; i < m_num_power; i++) {
+		//	temp[i] = m_power[i];
+		//}
+		//
+		//deallocate();
 
-		deallocate();
+		//m_power = new Power[m_num_power + 1];
+		//for (int i = 0; i < m_num_power; i++) {
+		//	m_power[i] = temp[i];
+		//	totalRarity += m_power[i].checkRarity();
+		//}
 
-		m_power = new Power[m_num_power + 1];
-		for (int i = 0; i < m_num_power; i++) {
-			m_power[i] = temp[i];
-			totalRarity += m_power[i].checkRarity();
-		}
+		//delete[] temp;
 
-		delete[] temp;
+		//m_power[m_num_power] = power;
 
-		m_power[m_num_power] = power;
-		totalRarity += m_power[m_num_power].checkRarity();
+		//totalRarity += m_power[m_num_power].checkRarity();
 
-		m_power_level = totalRarity * (m_num_power + 1);
-		m_num_power++;
+		//m_power_level = totalRarity * (m_num_power + 1);
+		//m_num_power++;
+		temp = new Power[m_num_power + 1];
+		temp = m_power;
+		temp[m_num_power] = power;
+		delete[] m_power;
+		m_power = temp;
+
+
+
 		return *this;
 	}
 
