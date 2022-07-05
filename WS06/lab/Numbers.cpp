@@ -100,7 +100,6 @@ namespace sdds {
    }
    int Numbers::numberCount() {
        int count{};
-       char newline{};
        ifstream f(m_filename);
        if (f.is_open()) {
            while (f) {
