@@ -1,0 +1,48 @@
+/*
+Workshop 06 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 07/06/2022
+*/
+
+
+In this workshop, I was able to learn how to create a copy constructor and a copy assignment operator for a class. Specifically, without a copy constructor, the program might crash when we assign a copy to the class when instantiating. A copy constructor will allow a class to be properly copy without going out of scope when the source class goes out of scope. For example, this is the copy constructor for Basket class:
+	Basket::Basket(const Basket& basket) {
+		*this = basket;
+	}
+
+	Basket& Basket::operator=(const Basket& basket) {
+		if (this != &basket) {
+			delete[] m_fruits;
+			m_cnt = basket.m_cnt;
+			m_price = basket.m_price;
+			m_fruits = new Fruit[m_cnt];
+			for (int i = 0; i < m_cnt; i++) {
+				m_fruits[i] = basket.m_fruits[i];
+			}
+		}
+		return *this;
+	}
+	
+Furthermore, through this workshop, I was able to implement the insertion and extraction operator in a class. In addition, having these operators will allow a class to display/write and read input data by using the insertion (“<<”) and extraction (“>>”) assign, making the code more readable and maintainable. An example of this in my code is:
+std::ostream& operator<<(std::ostream& ostr, const Basket& basket) {
+		if (basket.m_cnt == 0) {
+			ostr << "The basket is empty!" << endl;
+		}
+		else {
+			ostr << "Basket Content:" << endl;
+			for (int i = 0; i < basket.m_cnt; i++) {
+				ostr.width(10);
+				ostr.setf(ios::right);
+				ostr << basket.m_fruits[i].m_name;
+				ostr.unsetf(ios::right);
+				ostr << ": ";
+				ostr.setf(ios::fixed);
+				ostr.precision(2);
+				ostr << basket.m_fruits[i].m_qty << "kg" << endl;
+			}
+			ostr << "Price: " << basket.m_price << endl;
+		}
+		return ostr;
+	}
