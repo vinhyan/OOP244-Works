@@ -10,6 +10,9 @@ provided to complete my workshops and assignments.
 */
 #include <iostream>
 
+#ifndef SDDS_BASKET_H
+#define SDDS_BASKET_H
+
 namespace sdds {
 	struct Fruit {
 		char m_name[30 + 1];
@@ -30,10 +33,12 @@ namespace sdds {
 		Basket& operator+=(const Fruit fruit);
 		friend std::ostream& operator<<(std::ostream& ostr, const Basket& bastet);
 		~Basket();
-
 	};
-
-
-
-
 }
+
+
+
+#endif // !SDDS_BASKET_H
+
+
+
