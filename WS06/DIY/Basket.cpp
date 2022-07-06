@@ -22,6 +22,7 @@ namespace sdds {
 
 	Basket::Basket(const Fruit* fruits, int size, double price) {
 		if (fruits && size && price) {
+			delete[] m_fruits;
 			m_cnt = size;
 			m_price = price;
 			m_fruits = new Fruit[m_cnt];
@@ -37,6 +38,7 @@ namespace sdds {
 
 	Basket& Basket::operator=(const Basket& basket) {
 		if (this != &basket) {
+			delete[] m_fruits;
 			m_cnt = basket.m_cnt;
 			m_price = basket.m_price;
 			m_fruits = new Fruit[m_cnt];
