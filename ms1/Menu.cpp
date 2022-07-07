@@ -72,7 +72,7 @@ namespace sdds {
 	}
 	std::ostream& Menu::displayTitle(std::ostream& os)const {
 		if (m_menuTitle.m_content && m_menuTitle.m_content[0] != '\n') {
-			os << (const char*)m_menuTitle << ":" << endl;
+			os << (const char*)m_menuTitle << endl;
 		}
 		return os;
 	}
