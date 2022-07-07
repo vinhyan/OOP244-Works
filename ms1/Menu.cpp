@@ -72,12 +72,13 @@ namespace sdds {
 	}
 	std::ostream& Menu::displayTitle(std::ostream& os)const {
 		if (m_menuTitle.m_content && m_menuTitle.m_content[0] != '\n') {
-			os << (const char*)m_menuTitle << endl;
+			os << (const char*)m_menuTitle;
 		}
 		return os;
 	}
 	std::ostream& Menu::displayMenu(std::ostream& os = cout)const {
-		displayTitle(os);
+		if (m_menuTitle.m_content && m_menuTitle.m_content[0] != '\n')
+			displayTitle(os) << endl;
 		for (unsigned int i = 0; i < m_numOfItem; i++) {
 			os.width(2);
 			os.setf(ios::right);
