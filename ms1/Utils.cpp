@@ -17,7 +17,7 @@ using namespace std;
 
 
 namespace sdds {
-	int selectOption(int min, int max) {
+	int selectOption(unsigned int min, unsigned int max) {
 		unsigned int select{};
 		bool done{};
 		while (!done) {
