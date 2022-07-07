@@ -1,8 +1,8 @@
 /***********************************************************************
 // OOP244 Utils Module
 // File  utils.h
-// Version
-// Author
+// Version 1.0
+// Author Vinh Nhan
 // Description
 //
 // Revision History
@@ -14,7 +14,6 @@
 #define SDDS_UTILS_H__
 #include <iostream>
 namespace sdds {
-
-
+	int selectOption(int min, int max);
 }
 #endif // !

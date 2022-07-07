@@ -7,6 +7,9 @@ that my professor provided to complete my project milestones.
 -----------------------------------------------------------*/
 #include <iostream>
 
+#ifndef SDDS_MENU_H_
+#define SDDS_MENU_H_
+
 namespace sdds {
 	const unsigned int MAX_MENU_ITEMS = 20;
 	class Menu;
@@ -22,7 +25,6 @@ namespace sdds {
 		operator const char* ()const;
 		std::ostream& displayMenuItem(std::ostream& os) const;
 		MenuItem& operator=(const MenuItem& menuItem);
-		
 	};
 
 	class Menu {
@@ -42,9 +44,14 @@ namespace sdds {
 		operator unsigned int()const;
 		operator bool()const;
 		const char* operator[](int index)const;
-	
+
 	};
 
 	std::ostream& operator<<(std::ostream& left, Menu& menu);
-	
+
 }
+
+
+#endif // !SDDS_MENU_H
+
+

@@ -70,40 +70,39 @@ namespace sdds {
    int Date::currentYear()const {
       return m_CUR_YEAR;
    }
+   void Date::flushInput(std::istream& is) {
+       is.clear();
+       is.ignore(1000, '\n');
+   }
    std::istream& Date::read(std::istream& is) {
        errCode(NO_ERROR);
        is >> m_year;
        if (is.fail()) {
            errCode(CIN_FAILED);
-           is.clear();
-           is.ignore(1000, '\n');
+           flushInput(is);
        }
        else {
-           is.get();
+           is.get(); //get "/" character
            is >> m_mon;
-           if (cin.fail()) {
+           if (is.fail()) {
                errCode(CIN_FAILED);
-               cin.clear();
-               cin.ignore(1000, '\n');
+               flushInput(is);
            }
            else {
-               is.get();
+               is.get();  //get "/" character
                is >> m_day;
-               if (cin.fail()) {
+               if (is.fail()) {
                    errCode(CIN_FAILED);
-                   is.clear();
-                   is.ignore(1000, '\n');
+                   flushInput(is);
                }
-               //validation
                validate();
            }
        }
-       //is.ignore(1000, '\n');
        return is;
    }
    std::ostream& Date::write(std::ostream& os) const {
        if (bad()) {
-           dateStatus();
+           os << dateStatus();
        }
        else {
            os << m_year << "/";
@@ -133,9 +132,6 @@ namespace sdds {
    bool Date::operator<(const Date& date) const {
        return daysSince0001_1_1() < date.daysSince0001_1_1();
    }
-   int Date::operator-(const Date& date) {
-       return daysSince0001_1_1() - date.daysSince0001_1_1();
-   }
    Date::operator bool() const {
        return !m_ErrorCode;
    }
@@ -153,6 +149,10 @@ namespace sdds {
    }
    istream& operator>>(istream& is, Date& RO) {
       return RO.read(is);
+   }
+
+   int operator-(const Date& date1, const Date& date2) {
+       return date1.daysSince0001_1_1() - date2.daysSince0001_1_1();
    }
 
 

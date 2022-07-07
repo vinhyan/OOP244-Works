@@ -1,9 +1,9 @@
 /***********************************************************************
 // OOP244 Utils Module:
 // File  utils.cpp
-// Version
-// Date
-// Author
+// Version 1.0
+// Date 07/06/2022
+// Author Vinh Nhan
 // Description
 //
 // Revision History
@@ -17,5 +17,22 @@ using namespace std;
 
 
 namespace sdds {
-
+	int selectOption(int min, int max) {
+		unsigned int select{};
+		bool done{};
+		while (!done) {
+			cin >> select;
+			if (cin.fail() || !(select >= min && select <= max)) {
+				done = false;
+				cin.clear();
+				cin.ignore(1000, '\n');
+				cout << "Invalid Selection, try again: ";
+			}
+			else {
+				done = true;
+			}
+		}
+		cin.ignore(1000, '\n');
+		return select;
+	}
 }

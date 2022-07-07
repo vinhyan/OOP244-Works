@@ -10,13 +10,13 @@ that my professor provided to complete my project milestones.
 #include <iostream>
 #include <string.h>
 #include "Menu.h"
+#include "Utils.h"
 
 using namespace std;
 
 namespace sdds {
 
 	//MenuItem
-
 	MenuItem::MenuItem() {
 		m_content = nullptr;
 	}
@@ -28,7 +28,7 @@ namespace sdds {
 	}
 	MenuItem& MenuItem::setMenuItem(const char* content) {
 		if (content && content[0] != '\0') {
-			m_content = new char[strlen(content) + 1];  //DMA
+			m_content = new char[strlen(content) + 1];
 			strcpy(m_content, content);
 		}
 		else {
@@ -57,10 +57,8 @@ namespace sdds {
 	}
 
 	//Menu 
-	
 	Menu::Menu() {
 		m_menuTitle.m_content = nullptr;
-		
 	}
 	Menu::Menu(const char* title) {
 		if (title && title[0] != '\n') {
@@ -78,7 +76,7 @@ namespace sdds {
 		}
 		return os;
 	}
-	std::ostream& Menu::displayMenu(std::ostream& os)const {
+	std::ostream& Menu::displayMenu(std::ostream& os = cout)const {
 		displayTitle(os);
 		for (unsigned int i = 0; i < m_numOfItem; i++) {
 			os.width(2);
@@ -90,24 +88,8 @@ namespace sdds {
 		return os;
 	}
 	unsigned int Menu::run()const {
-		unsigned int select{};
-		bool done{};
-
-		displayMenu(cout);
-		while (!done) {
-			cin >> select;
-			if (cin.fail() || !(select >= 0 && select <= m_numOfItem)) {
-				done = false;
-				cin.clear();
-				cin.ignore(1000, '\n');
-				cout << "Invalid Selection, try again: ";
-			}
-			else {
-				done = true;
-			}
-		}
-		cin.ignore(1000, '\n');
-		return select;
+		displayMenu();
+		return selectOption(0, m_numOfItem);
 	}
 	unsigned int Menu::operator~() const{
 		return run();
@@ -129,11 +111,9 @@ namespace sdds {
 	Menu::operator bool() const {
 		return m_numOfItem > 0;
 	}
-
 	const char* Menu::operator[](int index) const {
 		return (const char*)*m_menuItems[index % m_numOfItem];
 	}
-
 	std::ostream& operator<<(std::ostream& left, Menu& menu) {
 		return menu.displayTitle(left);
 	}
