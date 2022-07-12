@@ -10,7 +10,6 @@ provided to complete my workshops and assignments.
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include <string>
 #include <string.h>
 #include "MemberParliament.h"
 
@@ -62,8 +61,6 @@ namespace sdds {
 
 	std::istream& MemberParliament::read(std::istream& in) {
 		bool done{};
-		string str;
-		char* idInput{};
 		cout << "Age: ";
 		while (!done) {
 			in >> m_age;
