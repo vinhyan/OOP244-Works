@@ -47,7 +47,7 @@ namespace sdds {
 
 	};
 
-	std::ostream& operator<<(std::ostream& left, Menu& menu);
+	std::ostream& operator<<(std::ostream& left, const Menu& menu);
 
 }
 

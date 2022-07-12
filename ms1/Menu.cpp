@@ -115,7 +115,7 @@ namespace sdds {
 	const char* Menu::operator[](int index) const {
 		return (const char*)*m_menuItems[index % m_numOfItem];
 	}
-	std::ostream& operator<<(std::ostream& left, Menu& menu) {
+	std::ostream& operator<<(std::ostream& left, const Menu& menu) {
 		return menu.displayTitle(left);
 	}
 
