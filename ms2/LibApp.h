@@ -25,7 +25,6 @@ namespace sdds {
 		void removePublication();
 		void checkOutPub();
 	public:
-		//Constructor
 		LibApp();
 		void run();
 	};

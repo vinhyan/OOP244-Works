@@ -40,7 +40,7 @@ namespace sdds {
 		}
 	}
 	void LibApp::removePublication() {
-		cout << "Publication checked out" << endl;
+		cout << "Removing publication from library" << endl;
 		search();
 		if (confirm("Remove this publication from the library?")) {
 			m_changed = true;
@@ -56,7 +56,7 @@ namespace sdds {
 	}
 	//Constructor
 	LibApp::LibApp() : m_mainMenu("Seneca Library Application"),
-					  m_exitMenu("Changes have been made to the data, what would you like to do ?") {
+					  m_exitMenu("Changes have been made to the data, what would you like to do?") {
 		m_changed = false;
 		m_mainMenu << "Add New Publication"
 				   << "Remove Publication"
@@ -71,23 +71,24 @@ namespace sdds {
 		int select{};
 		bool exit{};
 		do {
-			select = ~m_mainMenu;
-			if (!select) {
-				if (m_changed) {
-					select = ~m_exitMenu;
-					if (select != 2) {
-						if (select == 1) {
-							save();
-						}
-						else {
-							confirm("This will discard all the changes are you sure?") 
-							? exit = true : exit = false;
-						}
+			//Display MAIN menu and let user select menu option
+			select = ~m_mainMenu;  
+			if (!select) {            //select (0) exit MAIN menu
+				if (m_changed) { 
+					//Display EXIT menu and let user select menu option
+					select = ~m_exitMenu; 
+					switch (select) {
+					case 1:
+						save();
 						exit = true;
-					}
-					else {
+						break;
+					case 2:
 						cout << endl;
 						exit = false;
+						break;
+					default:
+						confirm("This will discard all the changes are you sure?") ? 
+						exit = true : exit = false;
 					}
 				}
 				else {
@@ -96,19 +97,20 @@ namespace sdds {
 			}
 			else {
 				exit = false;
-				if (select == 1) {
+				switch (select) {
+				case 1:
 					newPublication();
 					cout << endl;
-				}
-				else if (select == 2) {
+					break;
+				case 2:
 					removePublication();
 					cout << endl;
-				}
-				else if (select == 3) {
+					break;
+				case 3:
 					checkOutPub();
 					cout << endl;
-				}
-				else if (select == 4) {
+					break;
+				default:
 					returnPub();
 					cout << endl;
 				}
