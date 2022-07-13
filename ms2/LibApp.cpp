@@ -27,7 +27,7 @@ namespace sdds {
 	}
 	void LibApp::returnPub() {
 		search();
-		cout << "Returning Publication" << endl 
+		cout << "Returning publication" << endl 
 			 << "Publication returned" << endl;
 		m_changed = true;
 	}
