@@ -95,7 +95,7 @@ namespace sdds {
 					exit = true;
 				}
 			}
-			else {
+			else {      //select (1 - 4) options MAIN menu
 				exit = false;
 				switch (select) {
 				case 1:

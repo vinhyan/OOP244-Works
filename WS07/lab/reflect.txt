@@ -1,0 +1,41 @@
+/*
+Workshop 07 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 07/16/2022
+*/
+
+In this workshop, I was able to learn how to apply inheritance from a base class to a derived class in the C++ language. Specifically, a derived class object will inherit all the public member data and functions. For example, the code snippet below shows class Minister – which is a derived class from MemberParliament base class:
+class Minister : public MemberParliament {
+		char m_pm_name[MAX_PM_NAME_CHAR + 1]{};
+		double m_office_year{};
+	public:
+		Minister(const char* id, const int age, const double year, const char* district, 
+				 const char* pm_name);
+		void changePM(const char* pm);
+		void assumeOffice(double year);
+		std::ostream& write(std::ostream& os) const;
+		std::istream& read(std::istream& in);
+
+	};
+	
+In addition, a derived class can shadow its base class’s member functions. To accomplish this, in the derived class, create the same identifier as base class. Each time the function is called, C++ will bind the call to the one from the derived class if it is created. In case of calling the member function from the base class, we have to explicitly call it using scope resolution. For instance, the code below from my workshop shown the two functions read() and write() from Minister class shadowing the same 2 functions from MemberParliament class:
+class MemberParliament {
+		…
+		std::ostream& write(std::ostream& os) const;
+		std::istream& read(std::istream& in);
+	}; 
+class Minister : public MemberParliament {
+		…
+		std::ostream& write(std::ostream& os) const;
+		std::istream& read(std::istream& in);
+	};
+	
+Now that we have the same functions shadowing from the base class, if we have to call the function from the base class, use scope resolution to do achieve this:
+
+std::ostream& Minister::write(std::ostream& os) const {
+		MemberParliament::write(os) << " | " << m_pm_name << "/" << m_office_year;
+		return os;
+	} 
+However, if we do not specify the base class scope when calling the function, C++ will bind the call to the shadowed function in the derived class.
