@@ -26,6 +26,7 @@ namespace sdds {
 		void monthEnd();
 		void display(std::ostream& ostr) const;
 	};
+	iAccount* CreateAccount(const char*, double);
 }
 
 

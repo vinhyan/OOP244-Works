@@ -23,7 +23,7 @@ namespace sdds {
 		virtual void display(std::ostream&) const = 0;
 		virtual ~iAccount() {};
 	};
-	extern iAccount* CreateAccount(const char*, double);
+	iAccount* CreateAccount(const char*, double);
 }
 
 

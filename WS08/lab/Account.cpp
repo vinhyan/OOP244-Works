@@ -19,7 +19,6 @@ namespace sdds {
 		m_currBalance = 0.0;
 		if (accBalance > 0.0) m_currBalance = accBalance;
 	}
-
 	bool Account::credit(double amount) {
 		bool success{};
 		if (amount > 0.0) {
@@ -28,7 +27,6 @@ namespace sdds {
 		}
 		return success;
 	}
-
 	bool Account::debit(double amount) {
 		bool success{};
 		if (amount > 0.0) {
