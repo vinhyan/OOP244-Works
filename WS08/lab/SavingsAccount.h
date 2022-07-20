@@ -19,9 +19,9 @@ namespace sdds {
 	class SavingsAccount : public Account {
 		double m_intRate{};
 	public:
-		SavingsAccount(double, double);
+		SavingsAccount(double accBalance, double intRate);
 		void monthEnd();
-		void display(std::ostream&) const;
+		void display(std::ostream& ostr) const;
 	};
 }
 

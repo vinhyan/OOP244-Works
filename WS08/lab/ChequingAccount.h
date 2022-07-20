@@ -19,11 +19,11 @@ namespace sdds {
 		double m_transaction{};
 		double m_monthly{};
 	public:
-		ChequingAccount(double, double, double);
-		bool credit(double);
-		bool debit(double);
+		ChequingAccount(double accBalance, double transaction, double monthEnd);
+		bool credit(double amount);
+		bool debit(double amount);
 		void monthEnd();
-		void display(std::ostream&) const;
+		void display(std::ostream& ostr) const;
 	};
 }
 
