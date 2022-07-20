@@ -26,7 +26,6 @@ namespace sdds {
 		bool credit(double);
 		bool debit(double);
 	};
-	iAccount* CreateAccount(const char*, double);
 }
 
 
