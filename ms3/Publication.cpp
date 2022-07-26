@@ -90,7 +90,6 @@ namespace sdds {
 			}
 			ostr  << " | "
 				  << checkoutDate() << " |";
-			ostr.width(8);
 		}
 		else {
 			ostr << type() << "\t" << getRef() << "\t" << m_shelfId <<
