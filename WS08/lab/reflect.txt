@@ -1,0 +1,39 @@
+/*
+Workshop 08 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 07/25/2022
+*/
+
+In this workshop, I’ve learned how to create an abstract base class and pure virtual functions. Specifically, an abstract base class is a class that has at least one pure virtual function. In addition, pure virtual functions are functions of an abstract base class that do not have any implementations. For instance, in this workshop, the iAccount class is an abstract class that contains 4 pure virtual functions, credit(), debit(), monthEnd() and display():
+
+class iAccount {
+	public:
+		virtual bool credit(double) = 0;
+		virtual bool debit(double) = 0;
+		virtual void monthEnd() = 0;
+		virtual void display(std::ostream&) const = 0;
+		virtual ~iAccount() {};
+	};
+	
+Now that we have an abstract base class iAccount (which can also be called interface since there is no member variables), any classes that inherit from iAccount will be called concrete classes. Additionally, concrete classes contain member functions that have implementations of abstract class’s pure virtual functions. For example, SavingAccount and ChequingAccount are the two concrete classes of iAccount:
+
+class SavingsAccount : public Account {
+		double m_intRate{};
+	public:
+		SavingsAccount(double accBalance, double intRate);
+		void monthEnd();
+		void display(std::ostream& ostr) const;
+class ChequingAccount : public Account {
+		double m_transaction{};
+		double m_monthly{};
+	public:
+		ChequingAccount(double accBalance, double transaction, double monthEnd);
+		bool credit(double amount);
+		bool debit(double amount);
+		void monthEnd();
+		void display(std::ostream& ostr) const;
+	};
+
+Having an abstract class as an interface and concrete class for all the implementation can help hide all the logics from the client, making our code more clean, easy to read and maintain.
