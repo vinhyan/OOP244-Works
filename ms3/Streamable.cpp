@@ -11,7 +11,7 @@ that my professor provided to complete my project milestones.
 using namespace std;
 namespace sdds {
 	
-	std::ostream& sdds::operator<<(std::ostream& ostr, const Streamable& stream) {
+	std::ostream& operator<<(std::ostream& ostr, const Streamable& stream) {
 		if (stream) stream.write(ostr);
 		return ostr;
 	}
