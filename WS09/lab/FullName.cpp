@@ -19,11 +19,14 @@ namespace sdds {
 	}
 
 	FullName::FullName(const char* name, const char* lastName) : Name(name) {
-		m_value = nullptr;
+		delete[] m_value;
 		if (lastName && lastName[0] != '\0') {
 			m_value = new char[strlen(lastName) + 1];
 			strcpy(m_value, lastName);
-		} 
+		}
+		else {
+			m_value = nullptr;
+		}
 	}
 
 	FullName::FullName(const FullName& FN) {
@@ -35,11 +38,13 @@ namespace sdds {
 		if (this != &FN) {
 			Name& name = *this;
 			name = FN;
-			m_value = nullptr;
 			if (FN.m_value && FN.m_value[0] != '\0') {
 				delete[] m_value;
 				m_value = new char[strlen(FN.m_value) + 1];
 				strcpy(m_value, FN.m_value);
+			}
+			else {
+				m_value = nullptr;
 			}
 		}
 		return *this;
