@@ -117,7 +117,7 @@ namespace sdds {
 			istr >> tmp_libRef;
 			istr.get();
 			istr.getline(tmp_shelfId, SDDS_SHELF_ID_LEN + 1, '\t');
-			istr.getline(tmp_title, 255, '\t');
+			istr.getline(tmp_title, 256, '\t');
 			istr >> tmp_membership;
 			istr >> tmp_date;
 		}
