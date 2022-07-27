@@ -34,8 +34,12 @@ namespace sdds {
 	Name& Name::operator=(const Name& N) {
 		if (this != &N) {
 			if (N.m_value && N.m_value[0] != '\0') {
+				delete[] m_value;
 				m_value = new char[strlen(N.m_value) + 1];
 				strcpy(m_value, N.m_value);
+			}
+			else {
+				m_value = nullptr;
 			}
 		}
 		return *this;
