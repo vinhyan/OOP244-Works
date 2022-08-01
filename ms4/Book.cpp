@@ -28,9 +28,6 @@ namespace sdds {
 				m_author = new char[strlen(B.m_author) + 1];
 				strcpy(m_author, B.m_author);
 			}
-			else {
-				m_author = nullptr;
-			}
 		}
 		return *this;
 	}
