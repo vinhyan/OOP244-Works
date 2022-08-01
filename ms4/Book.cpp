@@ -45,6 +45,7 @@ namespace sdds {
 		if (conIO(ostr)) {
 			ostr << " ";
 			ostr.width(SDDS_AUTHOR_WIDTH);
+			ostr.setf(ios::left);
 			if (strlen(m_author) > SDDS_AUTHOR_WIDTH) {
 				tmp_author = new char[SDDS_AUTHOR_WIDTH + 1];
 				strncpy(tmp_author, m_author, SDDS_AUTHOR_WIDTH);
