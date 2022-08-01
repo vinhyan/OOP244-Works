@@ -55,7 +55,7 @@ namespace sdds {
 			else {
 				ostr << m_author << " |";
 			}
-
+			ostr.unsetf(ios::left);
 		}
 		else {
 			ostr << "\t" << m_author;
