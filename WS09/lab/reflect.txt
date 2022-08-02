@@ -1,0 +1,51 @@
+/*
+Workshop 09 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 08/01/2022
+*/
+
+In this workshop, I’ve learned how to create a derived class from a base class that contains a dynamic cString. Specifically, the FullName derived class contains a person’s last name while its base class Name contains the first name. For instance, the base class and derived class look like below:
+//Base class
+class Name {
+        char* m_value;
+    public:
+        Name();
+        Name(const char* name);
+        Name(const Name& N);
+        Name& operator=(const Name& N);
+        operator const char* ()const;
+        virtual operator bool()const;
+        virtual std::ostream& display(std::ostream& ostr = std::cout)const;
+        virtual std::istream& read(std::istream& istr = std::cin);
+        virtual ~Name();
+    };
+//Derived class
+class FullName : public Name {
+        char* m_value;
+    public:
+        FullName();
+        FullName(const char* name, const char* lastName);
+        // Rule of three goes here:
+        FullName(const FullName& FN);
+        FullName& operator=(const FullName& FN);
+        operator const char* ()const;
+        virtual operator bool()const;
+        virtual std::ostream& display(std::ostream& ostr = std::cout)const;
+        virtual std::istream& read(std::istream& istr = std::cin);
+        virtual ~FullName();
+    };
+
+In addition, rule of three is also applied to both classes, help making the program work appropriately. For example, the copy constructor in the derived class will not only copy the data of its own level but also the one from the base class. The implementation of the derived class FullName is as follows:
+FullName::FullName(const char* name, const char* lastName) : Name(name) {
+		delete[] m_value;
+		if (lastName && lastName[0] != '\0') {
+			m_value = new char[strlen(lastName) + 1];
+			strcpy(m_value, lastName);
+		}
+		else {
+			m_value = nullptr;
+		}
+	}
+Moreover, virtual methods are also applied to the derived class to make sure that the latest version of the methods will be called. 
