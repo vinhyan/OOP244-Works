@@ -155,7 +155,7 @@ namespace sdds {
 			cout << "Library is at its maximum capacity!" << endl;
 		}
 		else {
-			cout << "Adding new publication to library" << endl;
+			cout << "Adding new publication to the library" << endl;
 			select = ~m_pubMenu;
 			if (select == 1) {
 				pub = new Book;
