@@ -172,7 +172,7 @@ namespace sdds {
 					cout << "Aborted!";
 				}
 				else {
-					if (confirm("Add this publication to the library ?")) {
+					if (confirm("Add this publication to the library?")) {
 						if (pub) {
 							m_lastRefNum++;
 							pub->setRef(m_lastRefNum);
