@@ -1,4 +1,3 @@
-#pragma once
 /* Final Project Milestone 5
 Fullname  : Vinh Nhan
 Student ID: 171452212
