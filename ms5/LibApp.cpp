@@ -123,14 +123,36 @@ namespace sdds {
 	}
 	void LibApp::returnPub() {
 		int ref{};
+		int index{};
 		int loanDays{};
 		double penaltyFee{};
+		//Publication* pub;
 		Date today;
 		cout << "Return publication to the library" << endl;
 		ref = search(2);
 		if (ref) {
+			for (int i = 0; i < m_numOfPub; i++) {
+				if (m_pubs[i]->getRef() == ref) {
+					index = i;
+					i = m_numOfPub;
+				}
+			}
+			cout << *m_pubs[index] << endl;
 			if (confirm("Return Publication?")) {
-				for (int i = 0; i < m_numOfPub; i++) {
+				loanDays = today - m_pubs[index]->checkoutDate();
+				if (loanDays > 15) {
+					penaltyFee = (loanDays - 15) * 0.50;
+					cout << "Please pay $";
+					cout.setf(ios::fixed);
+					cout.precision(2);
+					cout << penaltyFee << " penalty for being "
+						<< (loanDays - 15) << " days late!" << endl;
+				}
+				m_pubs[index]->set(0);
+				cout << "Publication returned" << endl;
+				m_changed = true;
+
+				/*for (int i = 0; i < m_numOfPub; i++) {
 					if (m_pubs[i]->getRef() == ref) {
 						loanDays = today - m_pubs[i]->checkoutDate();
 						if (loanDays > 15) {
@@ -146,7 +168,7 @@ namespace sdds {
 						cout << "Publication returned" << endl;
 						m_changed = true;
 					}
-				}
+				}*/
 			}
 		}
 	}
