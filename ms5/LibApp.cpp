@@ -135,7 +135,10 @@ namespace sdds {
 						loanDays = today - m_pubs[i]->checkoutDate();
 						if (loanDays > 15) {
 							penaltyFee = (loanDays - 15) * 0.50;
-							cout << "Please pay $" << penaltyFee << " penalty for being " 
+							cout << "Please pay $";
+							cout.setf(ios::fixed);
+							cout.precision(2);
+							cout << penaltyFee << " penalty for being "
 								 << (loanDays - 15) << " days late!" << endl;
 						}
 						m_pubs[i]->set(0);
