@@ -59,7 +59,7 @@ namespace sdds {
 		int select{};
 		char title[256]{};
 		PublicationSelector ps("Select one of the following found matches:");
-		int matches{};
+		int matches = 0;
 		int ref{};
 		//cout << "Searching for publication" << endl;
 
@@ -71,38 +71,46 @@ namespace sdds {
 			for (int i = 0; i < m_numOfPub; i++) {
 				if (m_pubs[i]->getRef() != 0) {   //Filter out deleted publications
 					if (select == 1) {  //select 'Book'
-						if (m_pubs[i]->type() == 'B' && strstr(*m_pubs[i], title)) { 
-							matches++;
-							if (searchMode == 2) {
-								if (m_pubs[i]->onLoan()) {
-									ps << m_pubs[i];
+						if (m_pubs[i]->type() == 'B') { 
+							if (strstr(*m_pubs[i], title)) {
+								if (searchMode == 2) {
+									if (m_pubs[i]->onLoan()) {
+										ps << m_pubs[i];
+										matches++;
+									}
 								}
-							}
-							else if (searchMode == 3) {
-								if (!m_pubs[i]->onLoan()) {
-									ps << m_pubs[i];
+								else if (searchMode == 3) {
+									if (!m_pubs[i]->onLoan()) {
+										ps << m_pubs[i];
+										matches++;
+									}
 								}
-							}
-							else {
-								ps << m_pubs[i];
+								else {
+									ps << m_pubs[i];
+									matches++;
+								}
 							}
 						}
 					}
 					else if (select == 2) {  //select 'Publication'
-						if (m_pubs[i]->type() == 'P' && strstr(*m_pubs[i], title)) {
-							matches++;
-							if (searchMode == 2) {
-								if (m_pubs[i]->onLoan()) {
-									ps << m_pubs[i];
+						if (m_pubs[i]->type() == 'P') {
+							if (strstr(*m_pubs[i], title)) {
+								if (searchMode == 2) {
+									if (m_pubs[i]->onLoan()) {
+										ps << m_pubs[i];
+										matches++;
+									}
 								}
-							}
-							else if (searchMode == 3) {
-								if (!m_pubs[i]->onLoan()) {
-									ps << m_pubs[i];
+								else if (searchMode == 3) {
+									if (!m_pubs[i]->onLoan()) {
+										ps << m_pubs[i];
+										matches++;
+									}
 								}
-							}
-							else {
-								ps << m_pubs[i];
+								else {
+									ps << m_pubs[i];
+									matches++;
+								}
 							}
 						}
 					}
@@ -111,13 +119,15 @@ namespace sdds {
 			if (matches) {
 				ps.sort();
 				ref = ps.run();
+				if (!ref) select == 0;
 			}
 			else {
-				cout << "No matches found!";
+				cout << "No matches found!" << endl;
 			}
 		}
-		if (!select || !ref) {
+		if (!select) {
 			cout << "Aborted!" << endl;
+
 		}
 		return ref;
 	}
@@ -126,7 +136,6 @@ namespace sdds {
 		int index{};
 		int loanDays{};
 		double penaltyFee{};
-		//Publication* pub;
 		Date today;
 		cout << "Return publication to the library" << endl;
 		ref = search(2);
@@ -151,24 +160,6 @@ namespace sdds {
 				m_pubs[index]->set(0);
 				cout << "Publication returned" << endl;
 				m_changed = true;
-
-				/*for (int i = 0; i < m_numOfPub; i++) {
-					if (m_pubs[i]->getRef() == ref) {
-						loanDays = today - m_pubs[i]->checkoutDate();
-						if (loanDays > 15) {
-							penaltyFee = (loanDays - 15) * 0.50;
-							cout << "Please pay $";
-							cout.setf(ios::fixed);
-							cout.precision(2);
-							cout << penaltyFee << " penalty for being "
-								 << (loanDays - 15) << " days late!" << endl;
-						}
-						m_pubs[i]->set(0);
-						i = m_numOfPub;
-						cout << "Publication returned" << endl;
-						m_changed = true;
-					}
-				}*/
 			}
 		}
 	}
@@ -215,7 +206,6 @@ namespace sdds {
 						select = 0;
 					}
 				}
-
 			}
 			if (!select) cout << "Aborted!" << endl;
 		}
