@@ -119,7 +119,7 @@ namespace sdds {
 			if (matches) {
 				ps.sort();
 				ref = ps.run();
-				if (!ref) select == 0;
+				if (!ref) select = 0;
 			}
 			else {
 				cout << "No matches found!" << endl;
