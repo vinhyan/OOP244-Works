@@ -72,7 +72,7 @@ namespace sdds {
       }
       return 365 * ty + ty / 4 - ty / 100 + ty / 400 + (153 * tm - 457) / 5 + m_day - 306;
    }
-   Date::Date() :m_CUR_YEAR(systemYear()) {
+   Date::Date() :m_CUR_YEAR(systemYear()) { 
       setToToday();
    }
    Date::Date(int year, int mon, int day) : m_CUR_YEAR(systemYear()) {

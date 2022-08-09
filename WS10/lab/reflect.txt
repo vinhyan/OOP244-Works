@@ -1,0 +1,25 @@
+/*
+Workshop 10 - Reflection
+Full Name   : Vinh Nhan
+Seneca email: vnhan1@myseneca.ca
+Student ID  : 171452212
+Date        : 08/08/2022
+*/
+
+Through this workshop, I have learned how to create templates for functions. In object oriented programming, templates are a perfect example of parametric polymorphism where the type and the logic are independent. To create a template for function, we define it a separate header file. Next, we can define a function using that template below it. The great advantage of having a template is that there is no type restriction for the client code. This means the function works with any type being passed to it. For instance, in WS10, the below template is created for function find(), this function receives 3 arguments: an array of any type, an integer, and an argument of any type. 
+
+template <typename col_type, typename elm_type>
+	bool find(const col_type* arr, int index, const elm_type& element) {
+		return (arr[index] == element);
+	}
+	
+Another example from this workshop is function loadCollection(), where it has 2 parameters: one of any type and the other of Collection class of any type. This function then returns a Collection class of the same type as the second parameter.
+
+template <typename col_type, typename elm_type>
+	const Collection<col_type>& loadCollection(const elm_type& element, 
+											   Collection<col_type>& col) {
+		col.operator+=(element);
+		return col;
+	}
+	
+To conclude, using templates can help us avoid creating different loads for a function by not restricting the variable type, making our code easier to read, debug, and maintain.
